@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -6,18 +6,22 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import BottomButton from '../../components/BottomButton';
 import CustomStatusBar from '../../components/CustomStatusBar';
-
-import { scale, verticalScale } from 'react-native-size-matters';
+import RBSheet from 'react-native-raw-bottom-sheet';
+import {scale, verticalScale} from 'react-native-size-matters';
 import CustomInput from '../../components/CustomInput';
 import theme from '../../theme/theme';
-import { useNavigationHandler } from '../../routes/NavigationHandler';
+import {useNavigationHandler} from '../../routes/NavigationHandler';
+import OtpA from '../otp/OtpA';
+import {SCREEN_HEIGHT} from '../../utils/helperFucntion';
+import { RectButton } from 'react-native-gesture-handler';
 
 const LoginA = () => {
   const navigation = useNavigationHandler();
+  const refRBSheet = useRef();
   return (
     <SafeAreaView style={styles.mainContainer}>
       <CustomStatusBar statusBarColor={'black'} />
@@ -59,16 +63,15 @@ const LoginA = () => {
                   ? theme.activeButton
                   : theme.inactiveButton,
               }}
-              onPress={null} //function
+              onPress={()=>{refRBSheet.current.open()}} //function
             />
-            <Text 
-            style={styles.registerText}
-            onPress={()=>{
-              navigation.navigateTo('signup')
-            }}
-
-            
-            >Register</Text>
+            <Text
+              style={styles.registerText}
+              onPress={() => {
+                navigation.navigateTo('signup');
+              }}>
+              Register
+            </Text>
           </View>
         </KeyboardAwareScrollView>
 
@@ -85,6 +88,31 @@ const LoginA = () => {
           </View>
         </TouchableWithoutFeedback>
       </View>
+      <RBSheet
+        ref={refRBSheet}
+        closeOnDragDown={true}
+        closeOnPressMask={false}
+        closeOnPressBack={true}
+        animationType="slide"
+        nativeDriver={true}
+        height={SCREEN_HEIGHT}
+        openDuration={500}
+        closeDuration={500}
+        customStyles={{
+          container: {
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderTopLeftRadius: 0,
+            borderTopRightRadius: 0,
+            backgroundColor: theme.black,
+          },
+          draggableIcon: {
+            backgroundColor:theme.white,
+          },
+          
+        }}>
+        <OtpA />
+      </RBSheet>
     </SafeAreaView>
   );
 };

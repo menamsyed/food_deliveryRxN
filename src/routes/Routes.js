@@ -12,11 +12,11 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        {/*<Stack.Screen name='home' component={HomeA}/>*/}
-        <Stack.Screen name='otp' component={OtpA}/>
+        {/*<Stack.Screen name="home" component={HomeA} />*/}
         <Stack.Screen name="login" component={LoginA} />
+        <Stack.Screen name="otp" component={OtpA} />
+        
         <Stack.Screen name="signup" component={SignupA} />
-         
       </Stack.Navigator>
     </NavigationContainer>
   );
