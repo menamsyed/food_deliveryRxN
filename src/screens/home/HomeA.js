@@ -1,14 +1,23 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import CustomStatusBar from '../../components/CustomStatusBar';
+import theme from '../../theme/theme';
+import Header from '../../components/Header';
 
 const HomeA = () => {
   return (
-    <View>
-      <Text>HomeA</Text>
-    </View>
-  )
-}
+    <SafeAreaView style={styles.container}>
+      <CustomStatusBar statusBarColor={theme.primaryColor}/>
+      <Header/>
+    </SafeAreaView>
+  );
+};
 
-export default HomeA
+export default HomeA;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: theme.inactiveButton,
+  },
+});
