@@ -12,7 +12,8 @@ import theme from '../theme/theme';
 import { TextInput } from 'react-native-gesture-handler';
 import {
     scale,
-    verticalScale
+    verticalScale,
+    moderateScale
 } from 'react-native-size-matters';
 export default Header = () => {
   return (
@@ -58,7 +59,8 @@ export default Header = () => {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flex: 1 / 8,
+    paddingVertical: moderateScale(8),
+
     backgroundColor: theme.primaryColor,
   },
   contentBox: {

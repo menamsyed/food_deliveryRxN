@@ -18,7 +18,8 @@ const theme = {
     inactiveButton:'#868a8f',
 
     //placeholder
-    placeholderText:'#d9dbde'
+    placeholderText:'#d9dbde',
+    defaultBackgroundColor:'#d9dbde'
 
 
 
