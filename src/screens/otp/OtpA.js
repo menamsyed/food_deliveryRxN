@@ -7,7 +7,7 @@ import CustomStatusBar from '../../components/CustomStatusBar';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigationHandler} from '../../routes/NavigationHandler';
 import {scale} from 'react-native-size-matters';
-import {SCREEN_HEIGHT} from '../../utils/helperFucntion';
+import {SCREEN_HEIGHT} from '../../utils/helperFunction';
 
 const OtpA = () => {
   const navigation = useNavigationHandler();

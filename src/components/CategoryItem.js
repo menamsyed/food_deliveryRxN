@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import FastImage from 'react-native-fast-image';
 import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
@@ -114,6 +114,9 @@ const styles = StyleSheet.create({
 });
 
 const CategoryItem = props => {
+  const [openCartButton, setOpenCartButton] = useState(false);
+  //  const [closeCartButton, setCloseCartButton] = useState(false);
+
   const {
     title,
     image,
@@ -155,22 +158,25 @@ const CategoryItem = props => {
         </View>
         {!disabled && (
           <>
-            {cartBtn ? (
+            {openCartButton ? (
               <TouchableOpacity
                 disabled={disabled}
                 activeOpacity={0.8}
                 onPress={onPress}
                 style={styles.buttonFull}>
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => setOpenCartButton(!openCartButton)}>
                   <Icon name="minus" size={15} color={theme.white} />
                 </TouchableOpacity>
-                <Text style={styles.counterText}>XX</Text>
+                <Text adjustsFontSizeToFit style={styles.counterText}>X</Text>
                 <TouchableOpacity>
                   <Icon name="plus" size={15} color={theme.white} />
                 </TouchableOpacity>
               </TouchableOpacity>
             ) : qty >= 1 ? (
-              <TouchableOpacity style={styles.buttonPartial}>
+              <TouchableOpacity
+                style={styles.buttonPartial}
+                onPress={() => setOpenCartButton(!openCartButton)}>
                 <AntDesign color={theme.white} name={'plus'} size={18} />
               </TouchableOpacity>
             ) : null}

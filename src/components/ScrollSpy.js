@@ -2,7 +2,7 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import CarouselSlider from './CarouselSlider';
-import {SCREEN_WIDTH} from '../utils/helperFucntion';
+import {SCREEN_WIDTH} from '../utils/helperFunction';
 import {scale, verticalScale} from 'react-native-size-matters';
 import theme from '../theme/theme';
 import CategoryItem from './CategoryItem';

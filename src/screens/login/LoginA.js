@@ -16,7 +16,7 @@ import CustomInput from '../../components/CustomInput';
 import theme from '../../theme/theme';
 import {useNavigationHandler} from '../../routes/NavigationHandler';
 import OtpA from '../otp/OtpA';
-import {SCREEN_HEIGHT} from '../../utils/helperFucntion';
+import {SCREEN_HEIGHT} from '../../utils/helperFunction';
 import { RectButton } from 'react-native-gesture-handler';
 
 const LoginA = () => {

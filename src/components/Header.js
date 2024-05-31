@@ -1,26 +1,28 @@
 import React from 'react';
 import {
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import theme from '../theme/theme';
 
+import { useNavigation } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
 import {
-    scale,
-    verticalScale,
-    moderateScale
+  moderateScale,
+  scale,
+  verticalScale
 } from 'react-native-size-matters';
 export default Header = () => {
-  return (
+  const navigation = useNavigation();
+   return (
     <View style={styles.mainContainer}>
       <View style={styles.contentBox}>
         <View style={styles.leftContainer}>
-          <TouchableOpacity activeOpacity={0.4}>
+          <TouchableOpacity activeOpacity={0.4} onPress={()=>{navigation.openDrawer()}}> 
             <Feather name="menu" size={scale(20)} color={theme.white} />
           </TouchableOpacity>
           <TouchableOpacity

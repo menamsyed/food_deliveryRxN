@@ -2,7 +2,7 @@ import {StyleSheet, Text, View, useWindowDimensions} from 'react-native';
 import React from 'react';
 import Carousel from 'react-native-banner-carousel-updated';
 import FastImage from 'react-native-fast-image';
-import {SCREEN_HEIGHT} from '../utils/helperFucntion';
+import {SCREEN_HEIGHT} from '../utils/helperFunction';
 import theme from '../theme/theme';
 
 export default CarouselSlider = props => {
