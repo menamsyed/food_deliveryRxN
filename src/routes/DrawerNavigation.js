@@ -10,7 +10,7 @@ const Drawer = createDrawerNavigator();
 const DrawerNavigation = () => {
   return (
     <Drawer.Navigator
-      screenOptions={{drawerStyle: {width:'80%'}}}
+      screenOptions={{drawerStyle: {width: '80%'}}}
       drawerContent={props =>
         true ? (
           <DrawerLoginContent {...props} />
