@@ -7,6 +7,92 @@ import Divider from './Divider';
 import theme from '../theme/theme';
 import Icon from 'react-native-vector-icons/AntDesign';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useNavigationHandler} from '../routes/NavigationHandler';
+import Product from '../screens/product/Product';
+
+const CategoryItem = props => {
+  const navigation = useNavigationHandler();
+  const [openCartButton, setOpenCartButton] = useState(false);
+
+  const {
+    title,
+    image,
+    price,
+    originalPrice,
+    description,
+    itemId,
+    onPress,
+    disabled,
+    cartBtn,
+    qty,
+  } = props;
+
+  return (
+    <>
+      <TouchableOpacity
+        style={styles.mainContainer}
+        activeOpacity={0.8}
+        disabled={disabled}
+        onPress={onPress}>
+        <View style={styles.imgContainer}>
+          <FastImage style={styles.img} source={{uri: image}} />
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.titleTxt}>{title}</Text>
+          {description ? (
+            <Text style={styles.discTxt} numberOfLines={2}>
+              {description}
+            </Text>
+          ) : null}
+          <View style={styles.priceContainer}>
+            <Text style={styles.currPrice}>Rs. {price}</Text>
+            <Text style={styles.prevPrice}>{originalPrice}</Text>
+          </View>
+          {qty < 1 ? (
+            <View>
+              <Text style={styles.msgTxt}>Item not available</Text>
+            </View>
+          ) : null}
+        </View>
+        {!disabled && (
+          <>
+            {openCartButton ? (
+              <TouchableOpacity
+                disabled={disabled}
+                activeOpacity={0.8}
+                onPress={onPress}
+                style={styles.buttonFull}>
+                <TouchableOpacity
+                  onPress={() => setOpenCartButton(!openCartButton)}>
+                  <Icon name="minus" size={15} color={theme.white} />
+                </TouchableOpacity>
+                <Text adjustsFontSizeToFit style={styles.counterText}>
+                  X
+                </Text>
+                <TouchableOpacity>
+                  <Icon name="plus" size={15} color={theme.white} />
+                </TouchableOpacity>
+              </TouchableOpacity>
+            ) : qty >= 1 ? (
+              <TouchableOpacity
+                style={styles.buttonPartial}
+                onPress={() => setOpenCartButton(!openCartButton)}>
+                <AntDesign color={theme.white} name={'plus'} size={18} />
+              </TouchableOpacity>
+            ) : null}
+          </>
+        )}
+      </TouchableOpacity>
+      <Divider
+        height={0.5}
+        width={'100%'}
+        color={theme.defaultBackgroundColor}
+      />
+    </>
+  );
+};
+
+export default CategoryItem;
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -112,84 +198,3 @@ const styles = StyleSheet.create({
     shadowRadius: 2.22,
   },
 });
-
-const CategoryItem = props => {
-  const [openCartButton, setOpenCartButton] = useState(false);
-  //  const [closeCartButton, setCloseCartButton] = useState(false);
-
-  const {
-    title,
-    image,
-    price,
-    originalPrice,
-    description,
-    itemId,
-    onPress,
-    disabled,
-    cartBtn,
-    qty,
-  } = props;
-  return (
-    <>
-      <TouchableOpacity
-        style={styles.mainContainer}
-        activeOpacity={0.8}
-        disabled={disabled}
-        onPress={onPress}>
-        <View style={styles.imgContainer}>
-          <FastImage style={styles.img} source={{uri: image}} />
-        </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.titleTxt}>{title}</Text>
-          {description ? (
-            <Text style={styles.discTxt} numberOfLines={2}>
-              {description}
-            </Text>
-          ) : null}
-          <View style={styles.priceContainer}>
-            <Text style={styles.currPrice}>Rs. {price}</Text>
-            <Text style={styles.prevPrice}>{originalPrice}</Text>
-          </View>
-          {qty < 1 ? (
-            <View>
-              <Text style={styles.msgTxt}>Item not available</Text>
-            </View>
-          ) : null}
-        </View>
-        {!disabled && (
-          <>
-            {openCartButton ? (
-              <TouchableOpacity
-                disabled={disabled}
-                activeOpacity={0.8}
-                onPress={onPress}
-                style={styles.buttonFull}>
-                <TouchableOpacity
-                  onPress={() => setOpenCartButton(!openCartButton)}>
-                  <Icon name="minus" size={15} color={theme.white} />
-                </TouchableOpacity>
-                <Text adjustsFontSizeToFit style={styles.counterText}>X</Text>
-                <TouchableOpacity>
-                  <Icon name="plus" size={15} color={theme.white} />
-                </TouchableOpacity>
-              </TouchableOpacity>
-            ) : qty >= 1 ? (
-              <TouchableOpacity
-                style={styles.buttonPartial}
-                onPress={() => setOpenCartButton(!openCartButton)}>
-                <AntDesign color={theme.white} name={'plus'} size={18} />
-              </TouchableOpacity>
-            ) : null}
-          </>
-        )}
-      </TouchableOpacity>
-      <Divider
-        height={0.5}
-        width={'100%'}
-        color={theme.defaultBackgroundColor}
-      />
-    </>
-  );
-};
-
-export default CategoryItem;

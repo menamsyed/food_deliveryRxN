@@ -7,6 +7,7 @@ import {scale, verticalScale} from 'react-native-size-matters';
 import theme from '../theme/theme';
 import CategoryItem from './CategoryItem';
 import Divider from './Divider';
+import {useNavigationHandler} from '../routes/NavigationHandler';
 
 const XCategoryTabLayout = ({menuData, isSelect, updateIsSelect}) => {
   return (
@@ -43,6 +44,7 @@ const XCategoryTabLayout = ({menuData, isSelect, updateIsSelect}) => {
 };
 
 export default ScrollSpy = () => {
+  const navigation = useNavigationHandler();
   const [isSelect, setIsSelect] = useState(1);
   const [layoutObj, setLayoutObj] = useState({});
   const [layoutObjX, setLayoutObjX] = useState({});
@@ -148,6 +150,7 @@ export default ScrollSpy = () => {
       originalPrice={item.originalPrice}
       qty={item.qty}
       disabled={item.disabled}
+      onPress={() => navigation.navigateTo('product', {itemDetails: item})}
     />
   );
 
@@ -160,7 +163,11 @@ export default ScrollSpy = () => {
         updateIsSelect={_updateIsSelect}
       />
       <View>
-        <FlatList data={dummyData} renderItem={_renderItem} />
+        <FlatList
+          data={dummyData}
+          renderItem={_renderItem}
+          keyExtractor={item => item.itemId}
+        />
         <Divider height={scale(100)} width={'100%'} color={theme.white} />
       </View>
     </ScrollView>

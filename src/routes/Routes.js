@@ -6,6 +6,7 @@ import LoginA from '../screens/login/LoginA';
 import OtpA from '../screens/otp/OtpA';
 import SignupA from '../screens/signup/SignupA';
 import DrawerNavigation from './DrawerNavigation';
+import Product from '../screens/product/Product';
 
 const Stack = createNativeStackNavigator();
 const Routes = () => {
@@ -16,6 +17,7 @@ const Routes = () => {
         <Stack.Screen name="login" component={LoginA} />
         <Stack.Screen name="otp" component={OtpA} />
         <Stack.Screen name="signup" component={SignupA} />
+        <Stack.Screen name='product' component={Product}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

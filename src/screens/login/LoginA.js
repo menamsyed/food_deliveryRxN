@@ -17,7 +17,7 @@ import theme from '../../theme/theme';
 import {useNavigationHandler} from '../../routes/NavigationHandler';
 import OtpA from '../otp/OtpA';
 import {SCREEN_HEIGHT} from '../../utils/helperFunction';
-import { RectButton } from 'react-native-gesture-handler';
+import {RectButton} from 'react-native-gesture-handler';
 
 const LoginA = () => {
   const navigation = useNavigationHandler();
@@ -33,7 +33,6 @@ const LoginA = () => {
             color={theme.white}
           />
         </View>
-
         <KeyboardAwareScrollView
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="always"
@@ -63,7 +62,9 @@ const LoginA = () => {
                   ? theme.activeButton
                   : theme.inactiveButton,
               }}
-              onPress={()=>{refRBSheet.current.open()}} //function
+              onPress={() => {
+                refRBSheet.current.open();
+              }} //function
             />
             <Text
               style={styles.registerText}
@@ -107,9 +108,8 @@ const LoginA = () => {
             backgroundColor: theme.black,
           },
           draggableIcon: {
-            backgroundColor:theme.white,
+            backgroundColor: theme.white,
           },
-          
         }}>
         <OtpA />
       </RBSheet>

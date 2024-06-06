@@ -11,6 +11,7 @@ const CustomInput = () => {
         placeholderTextColor={theme.placeholderText}
         keyboardType="number-pad"
         textAlignVertical="center"
+        
       />
     </View>
   );
