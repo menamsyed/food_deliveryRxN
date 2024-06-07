@@ -1,17 +1,18 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {ScrollView} from 'react-native-gesture-handler';
-import CustomStatusBar from '../../components/CustomStatusBar';
-import theme from '../../theme/theme';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import {scale, verticalScale} from 'react-native-size-matters';
+import { ScrollView } from 'react-native-gesture-handler';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { scale } from 'react-native-size-matters';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
+import CustomStatusBar from '../../components/CustomStatusBar';
+import Footer from '../../components/Footer';
+import ProductDescriptonBox from '../../components/ProductDescriptonBox';
 import { useNavigationHandler } from '../../routes/NavigationHandler';
-import CustomInput from '../../components/CustomInput';
+import theme from '../../theme/theme';
 
 const Product = ({route}) => {
-    const navigation = useNavigationHandler();
+  const navigation = useNavigationHandler();
   const {itemDetails} = route.params;
 
   return (
@@ -22,7 +23,11 @@ const Product = ({route}) => {
       />
       <SafeAreaView style={styles.rootContainer}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <TouchableOpacity style={styles.iconContainer} onPress={()=>{navigation.goBack()}}>
+          <TouchableOpacity
+            style={styles.iconContainer}
+            onPress={() => {
+              navigation.goBack();
+            }}>
             <Ionicons
               name={'arrow-back-sharp'}
               size={scale(28)}
@@ -30,29 +35,15 @@ const Product = ({route}) => {
             />
           </TouchableOpacity>
           <View style={styles.imgContainer}>
-            <FastImage source={{uri: itemDetails.image}} resizeMode="cover" />
+            <FastImage source={{uri:itemDetails.image}} />
           </View>
-          <View style={styles.txtContainer}>
-            <Text style={styles.titleTxt}>{itemDetails.title}</Text>
-            <Text style={styles.descriptionTxt}>{itemDetails.description}</Text>
-            <View style={styles.priceContainer}>
-              <Text style={styles.currPricetxt}>Rs. {itemDetails.price}</Text>
-              <Text style={styles.oldPricetxt}>
-                Rs. {itemDetails.originalPrice}
-              </Text>
-            </View>
-            <View>
-                <Text>Special Instructions</Text>
-                <CustomInput/>
-            </View>
-          </View>
+          <ProductDescriptonBox itemDetails={itemDetails} />
         </ScrollView>
-        <View></View>
+        <Footer />
       </SafeAreaView>
     </>
   );
 };
-
 export default Product;
 
 const styles = StyleSheet.create({
@@ -70,41 +61,10 @@ const styles = StyleSheet.create({
     width: scale(200),
     height: scale(200),
     backgroundColor: theme.imagePlaceholderColor,
+    backfaceVisibility:'visible',
     alignSelf: 'center',
-    elevation: scale(20),
+    elevation: scale(10),
     marginVertical: scale(10),
     borderRadius: scale(6),
-  },
-  txtContainer: {
-    paddingHorizontal: scale(20),
-    paddingVertical: scale(20),
-  },
-  titleTxt: {
-    color: theme.black,
-    fontSize: scale(20),
-    fontWeight: '600',
-  },
-  descriptionTxt: {
-    color: theme.placeholderText,
-    fontSize: scale(12),
-    fontWeight: '400',
-  },
-  priceContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '35%',
-    alignItems: 'center',
-    paddingTop: scale(10),
-  },
-  oldPricetxt: {
-    color: theme.black,
-    fontSize: scale(10),
-    fontWeight: '400',
-    textDecorationLine: 'line-through',
-  },
-  currPricetxt: {
-    color: theme.black,
-    fontSize: scale(12),
-    fontWeight: '600',
   },
 });

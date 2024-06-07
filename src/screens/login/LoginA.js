@@ -49,7 +49,10 @@ const LoginA = () => {
               <Text style={styles.labelText}>Enter your Mobile Number</Text>
             </View>
             <View style={styles.inputContainer}>
-              <CustomInput />
+              <CustomInput
+              placeholder= {'03XXXXXXXXX'}
+              keyboardType= "number-pad"
+               />
             </View>
           </View>
 

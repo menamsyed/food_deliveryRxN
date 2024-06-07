@@ -1,14 +1,12 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
-import Divider from './Divider';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { scale, verticalScale } from 'react-native-size-matters';
+import { default as AntDesign, default as Icon } from 'react-native-vector-icons/AntDesign';
+import { useNavigationHandler } from '../routes/NavigationHandler';
 import theme from '../theme/theme';
-import Icon from 'react-native-vector-icons/AntDesign';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import {useNavigationHandler} from '../routes/NavigationHandler';
-import Product from '../screens/product/Product';
+import Divider from './Divider';
 
 const CategoryItem = props => {
   const navigation = useNavigationHandler();

@@ -5,6 +5,7 @@ import theme from '../theme/theme';
 
 const BottomButton = ({title, onPress, buttonStyle, disabled}) => {
   return (
+    
     <View style={[styles.container, buttonStyle]}>
       <TouchableOpacity
         activeOpacity={0.9}

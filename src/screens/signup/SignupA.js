@@ -21,7 +21,9 @@ const SignupA = () => {
             name={'arrow-back-sharp'}
             size={scale(25)}
             color={theme.white}
-            onPress={()=>{navigation.navigateTo('login')}}
+            onPress={() => {
+              navigation.navigateTo('login');
+            }}
           />
         </View>
         <View>
@@ -32,11 +34,11 @@ const SignupA = () => {
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.labelText}>Full Name</Text>
-          <CustomInput />
+          <CustomInput placeholder={'Enter your full name'} keyboardType="number-pad" />
           <Text style={styles.labelText}>Email</Text>
-          <CustomInput />
+          <CustomInput placeholder={'Enter your email'} keyboardType="number-pad" />
           <Text style={styles.labelText}>Mobile Number</Text>
-          <CustomInput />
+          <CustomInput placeholder={'03XXXXXXXXX'} keyboardType="number-pad" />
         </View>
         <View style={styles.buttonContainer}>
           <BottomButton

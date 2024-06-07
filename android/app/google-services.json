@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "696317822056",
+    "project_id": "proj-fdxrn",
+    "storage_bucket": "proj-fdxrn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696317822056:android:4c9dc136cb5cc81799e7dd",
+        "android_client_info": {
+          "package_name": "com.food_deliveryrxn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXgxrnQij6O2CZLUD6PsmBSSKiy-pTn7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

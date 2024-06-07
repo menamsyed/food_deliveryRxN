@@ -3,14 +3,17 @@ import React from 'react';
 import theme from '../theme/theme';
 import {scale, verticalScale} from 'react-native-size-matters';
 
-const CustomInput = () => {
+const CustomInput = (props) => {
+  const {keyboardType,placeholder} = props;
+  
   return (
     <View style={styles.mainContainer}>
       <TextInput
-        placeholder={'03XX-XXXXXXX'}
+        placeholder={placeholder}
         placeholderTextColor={theme.placeholderText}
-        keyboardType="number-pad"
+        keyboardType={keyboardType}
         textAlignVertical="center"
+        //"number-pad"
         
       />
     </View>
@@ -25,7 +28,7 @@ const styles = StyleSheet.create({
     height: scale(40),
     backgroundColor: theme.white,
     borderRadius: 4,
-    borderColor: theme.white,
+    borderColor: theme.defaultBackgroundColor,
     borderWidth: 1,
     paddingLeft: 8,
   },
