@@ -1,18 +1,28 @@
-import {StyleSheet, Text, TextInput, View} from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
+import { StyleSheet, TextInput, View } from 'react-native';
+import { scale } from 'react-native-size-matters';
 import theme from '../theme/theme';
-import {scale, verticalScale} from 'react-native-size-matters';
 
 const CustomInput = (props) => {
-  const {keyboardType,placeholder} = props;
+  const {keyboardType,placeholder,maxLength,onChangePhoneNumber,value} = props;
+
+   
+
+
   
   return (
     <View style={styles.mainContainer}>
       <TextInput
+        maxLength={maxLength}
+        onChangeText={onChangePhoneNumber}
+        value={value}
         placeholder={placeholder}
         placeholderTextColor={theme.placeholderText}
         keyboardType={keyboardType}
         textAlignVertical="center"
+         
+        
+        //value={value}
         //"number-pad"
         
       />

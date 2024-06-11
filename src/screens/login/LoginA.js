@@ -1,5 +1,7 @@
-import React, {useRef} from 'react';
+import auth from '@react-native-firebase/auth';
+import React, {useRef, useState} from 'react';
 import {
+  Alert,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -7,21 +9,38 @@ import {
   View,
 } from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import Ionicons from 'react-native-vector-icons/dist/Ionicons';
-import BottomButton from '../../components/BottomButton';
-import CustomStatusBar from '../../components/CustomStatusBar';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {scale, verticalScale} from 'react-native-size-matters';
-import CustomInput from '../../components/CustomInput';
-import theme from '../../theme/theme';
+import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import {useNavigationHandler} from '../../routes/NavigationHandler';
-import OtpA from '../otp/OtpA';
+import theme from '../../theme/theme';
 import {SCREEN_HEIGHT} from '../../utils/helperFunction';
-import {RectButton} from 'react-native-gesture-handler';
+
+import BottomButton from '../../components/BottomButton';
+import CustomInput from '../../components/CustomInput';
+import CustomStatusBar from '../../components/CustomStatusBar';
+import OtpA from '../otp/OtpA';
 
 const LoginA = () => {
+  //states
+  const [confirm, setConfirm] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState('');
+  console.log(phoneNumber);
+   
+
+  const onChangePhoneNumber = x => {
+    setPhoneNumber(x);
+  };
+
+  //functions
+ async function signInWithPhoneNumber() {
+    const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
+    setConfirm(confirmation);
+  }
+
   const navigation = useNavigationHandler();
   const refRBSheet = useRef();
+
   return (
     <SafeAreaView style={styles.mainContainer}>
       <CustomStatusBar statusBarColor={'black'} />
@@ -50,24 +69,29 @@ const LoginA = () => {
             </View>
             <View style={styles.inputContainer}>
               <CustomInput
-              placeholder= {'03XXXXXXXXX'}
-              keyboardType= "number-pad"
-               />
+                placeholder={'03XXXXXXXXX'}
+                keyboardType="number-pad"
+                maxLength={11}
+                onChangePhoneNumber={onChangePhoneNumber}
+                value={phoneNumber}
+              />
             </View>
           </View>
 
           <View style={styles.buttonContainer}>
             <BottomButton
               title={'Login'}
-              disabled={false} //condition
+              //  disabled={phoneNumber.length === 11 ? false : true} //condition
               buttonStyle={{
-                backgroundColor: false
-                  ? theme.activeButton
-                  : theme.inactiveButton,
+                backgroundColor:
+                  phoneNumber.length === 11
+                    ? theme.activeButton
+                    : theme.inactiveButton,
               }}
               onPress={() => {
-                refRBSheet.current.open();
-              }} //function
+                //refRBSheet.current.open();
+                signInWithPhoneNumber();
+              }}
             />
             <Text
               style={styles.registerText}
