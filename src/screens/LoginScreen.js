@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
+import PhoneSignin from './PhoneSignin';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -45,6 +46,7 @@ const LoginScreen = () => {
       <TouchableOpacity onPress={onLogin} style={styles.register}>
         <Text style={styles.registerTitle}>Login</Text>
       </TouchableOpacity>
+      <PhoneSignin/>
     </View>
   );
 };
