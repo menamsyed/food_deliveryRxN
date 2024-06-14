@@ -7,12 +7,15 @@ import DrawerLoginContent from '../components/DrawerLoginContent';
 import DrawerLogoutContent from '../components/DrawerLogoutContent';
 
 const Drawer = createDrawerNavigator();
-const DrawerNavigation = () => {
+const DrawerNavigation = (props) => {
+  const {user} = props
+  console.log(user,'abay user yeh hy');
+
   return (
     <Drawer.Navigator
       screenOptions={{drawerStyle: {width: '80%'}}}
       drawerContent={props =>
-        true ? (
+        user ? (
           <DrawerLoginContent {...props} />
         ) : (
           <DrawerLogoutContent {...props} />

@@ -4,32 +4,31 @@ import LoginScreen from './screens/LoginScreen';
 import auth from '@react-native-firebase/auth';
 import SignUpScreen from './screens/SignUpScreen';
 import LogOutScreen from './screens/LogOutScreen';
+import Routes from './routes/Routes';
 
 // TODO: Remove when fixed
 
 const App = () => {
-  const [user,setUser] = useState();
-  console.log(user,'userrr');
+  const [user, setUser] = useState();
+  console.log(user, 'userrr');
 
-  //onAuthStateStateChanged is async listener, 
+  //onAuthStateStateChanged is async listener,
   //which trigger the initial state whenver connection estaiblished with FB
-  
-   const onAuthStateSave = (user)=>{
+
+  const onAuthStateSave = user => {
     setUser(user);
-   }
-  useEffect(()=>{
+  };
+  useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateSave);
     return subscriber;
-  })
-   
+  });
 
   return (
     //<Routes/>
     //<SignUpScreen/>
-   // <LogOutScreen/>
-   <>{user?<LogOutScreen/>:<LoginScreen/>}</>
-   
-
+    // <LogOutScreen/>
+    // <>{user?<LogOutScreen/>:<LoginScreen/>}</>
+    <Routes user={user} />
   );
 };
 

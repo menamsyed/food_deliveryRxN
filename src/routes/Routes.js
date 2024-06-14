@@ -10,14 +10,18 @@ import Product from '../screens/product/Product';
 import SignUpScreen from '../screens/SignUpScreen';
 
 const Stack = createNativeStackNavigator();
-const Routes = () => {
+const Routes = props => {
+  const {user} = props;
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="auth"
+        initialRouteName="login"
         screenOptions={{headerShown: false}}>
-        <Stack.Screen name="homenavigator" component={DrawerNavigation} />
-        <Stack.Screen name="auth" component={SignUpScreen} />
+        <Stack.Screen
+          name="homenavigator"
+          component={DrawerNavigation}
+          user={user}
+        />
         <Stack.Screen name="login" component={LoginA} />
         <Stack.Screen name="otp" component={OtpA} />
         <Stack.Screen name="signup" component={SignupA} />

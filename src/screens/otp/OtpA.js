@@ -1,5 +1,14 @@
-import {Pressable, SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Button,
+  Alert,
+} from 'react-native';
+import React, {useState} from 'react';
 import theme from '../../theme/theme';
 import Feather from 'react-native-vector-icons/Feather';
 import CodeInput from 'react-native-code-input';
@@ -9,8 +18,27 @@ import {useNavigationHandler} from '../../routes/NavigationHandler';
 import {scale} from 'react-native-size-matters';
 import {SCREEN_HEIGHT} from '../../utils/helperFunction';
 
-const OtpA = () => {
-  const navigation = useNavigationHandler();
+const OtpA = props => {
+  const {confirm, phoneNumber} = props;
+
+  const [code, setCode] = useState('');
+  console.log(code, '<<<code');
+
+  const handleOnChangeText = text => {
+    setCode(text);
+     
+  };
+
+  async function confirmCode(x) {
+    console.log(x,'abctest');
+    try {
+      await confirm.confirm(x);
+      Alert.alert('code agaya')
+    } catch (error) {
+      console.log('Invalid code.');
+    }
+  }
+
   return (
     <SafeAreaView style={styles.mainContainer}>
       <CustomStatusBar statusBarColor={theme.black} />
@@ -21,9 +49,9 @@ const OtpA = () => {
             Enter 6 digit verification code, sent to your mobile number
           </Text>
           <View style={styles.iconContainer}>
-            <Text style={styles.numberText}>03333333333</Text>
-            <Pressable onPress={() => {}}>
-              <Feather size={15} color={theme.white} name="edit" />
+            <Text style={styles.numberText}>{phoneNumber}</Text>
+            <Pressable style={styles.icon} onPress={() => {}}>
+              <Feather size={20} color={theme.white} name="edit" />
             </Pressable>
           </View>
         </View>
@@ -32,8 +60,9 @@ const OtpA = () => {
           codeLength={6}
           containerStyle={styles.codeInputview}
           codeInputStyle={styles.codeInput}
-          onFulfill={() => {
-            navigation.navigateTo('home');
+          onFulfill={(x) => {
+            confirmCode(x);
+            
           }}
           autoFocus={true}
           ignoreCase={true}
@@ -44,6 +73,11 @@ const OtpA = () => {
         </View>
       </View>
     </SafeAreaView>
+
+    //<View>
+    //  <TextInput  style={{width:'80%', backgroundColor:'white', borderColor:'black',borderWidth:2}} value={code} onChangeText={text => setCode(text)} />
+    //  <Button title="Confirm Code" onPress={() => confirmCode(confirm)}  />
+    //</View>
   );
 };
 
@@ -73,9 +107,12 @@ const styles = StyleSheet.create({
   iconContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '33%',
+    width: '80%',
   },
+  icon: {
+    paddingHorizontal: scale(10),
+  },
+
   buttonContainer: {
     alignSelf: 'flex-start',
     marginTop: scale(15),

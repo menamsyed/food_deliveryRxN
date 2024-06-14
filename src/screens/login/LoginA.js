@@ -20,20 +20,21 @@ import BottomButton from '../../components/BottomButton';
 import CustomInput from '../../components/CustomInput';
 import CustomStatusBar from '../../components/CustomStatusBar';
 import OtpA from '../otp/OtpA';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const LoginA = () => {
   //states
   const [confirm, setConfirm] = useState(null);
   const [phoneNumber, setPhoneNumber] = useState('');
   console.log(phoneNumber);
-   
+  console.log(confirm,'<<<confirm');
 
   const onChangePhoneNumber = x => {
     setPhoneNumber(x);
   };
 
   //functions
- async function signInWithPhoneNumber() {
+  async function signInWithPhoneNumber(phoneNumber) {
     const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
     setConfirm(confirmation);
   }
@@ -45,13 +46,13 @@ const LoginA = () => {
     <SafeAreaView style={styles.mainContainer}>
       <CustomStatusBar statusBarColor={'black'} />
       <View style={styles.container}>
-        <View style={styles.iconContainer}>
+        <TouchableOpacity style={styles.iconContainer}>
           <Ionicons
             name={'arrow-back-sharp'}
             size={scale(25)}
             color={theme.white}
           />
-        </View>
+        </TouchableOpacity>
         <KeyboardAwareScrollView
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="always"
@@ -70,8 +71,9 @@ const LoginA = () => {
             <View style={styles.inputContainer}>
               <CustomInput
                 placeholder={'03XXXXXXXXX'}
-                keyboardType="number-pad"
-                maxLength={11}
+                keyboardType="default"
+                //number-pad
+                maxLength={15}
                 onChangePhoneNumber={onChangePhoneNumber}
                 value={phoneNumber}
               />
@@ -81,16 +83,16 @@ const LoginA = () => {
           <View style={styles.buttonContainer}>
             <BottomButton
               title={'Login'}
-              //  disabled={phoneNumber.length === 11 ? false : true} //condition
+             // disabled={phoneNumber.length === 11 ? false : true} //condition
               buttonStyle={{
                 backgroundColor:
-                  phoneNumber.length === 11
+                  phoneNumber.length === 15
                     ? theme.activeButton
                     : theme.inactiveButton,
               }}
               onPress={() => {
-                //refRBSheet.current.open();
-                signInWithPhoneNumber();
+                refRBSheet.current.open();
+                signInWithPhoneNumber(phoneNumber);
               }}
             />
             <Text
@@ -138,7 +140,7 @@ const LoginA = () => {
             backgroundColor: theme.white,
           },
         }}>
-        <OtpA />
+        <OtpA confirm={confirm} phoneNumber={phoneNumber}/>
       </RBSheet>
     </SafeAreaView>
   );

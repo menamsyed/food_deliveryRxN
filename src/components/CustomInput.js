@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
-import { StyleSheet, TextInput, View } from 'react-native';
-import { scale } from 'react-native-size-matters';
+import React, {useState} from 'react';
+import {StyleSheet, TextInput, View} from 'react-native';
+import {scale} from 'react-native-size-matters';
 import theme from '../theme/theme';
+import { useNavigationHandler } from '../routes/NavigationHandler';
 
-const CustomInput = (props) => {
-  const {keyboardType,placeholder,maxLength,onChangePhoneNumber,value} = props;
+const CustomInput = props => {
+   const {keyboardType, placeholder, maxLength, onChangePhoneNumber, value} =
+    props;
 
-   
-
-
-  
   return (
     <View style={styles.mainContainer}>
       <TextInput
@@ -20,11 +18,9 @@ const CustomInput = (props) => {
         placeholderTextColor={theme.placeholderText}
         keyboardType={keyboardType}
         textAlignVertical="center"
-         
-        
+
         //value={value}
         //"number-pad"
-        
       />
     </View>
   );
@@ -36,10 +32,11 @@ const styles = StyleSheet.create({
   mainContainer: {
     width: '100%',
     height: scale(40),
-    backgroundColor: theme.white,
+    backgroundColor: theme.black,
     borderRadius: 4,
     borderColor: theme.defaultBackgroundColor,
     borderWidth: 1,
     paddingLeft: 8,
+    color: theme.black,
   },
 });
