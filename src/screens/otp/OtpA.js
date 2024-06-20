@@ -1,22 +1,19 @@
+import React, { useState } from 'react';
 import {
+  Alert,
   Pressable,
   SafeAreaView,
   StyleSheet,
   Text,
-  View,
-  TextInput,
-  Button,
-  Alert,
+  View
 } from 'react-native';
-import React, {useState} from 'react';
-import theme from '../../theme/theme';
-import Feather from 'react-native-vector-icons/Feather';
 import CodeInput from 'react-native-code-input';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { scale } from 'react-native-size-matters';
+import Feather from 'react-native-vector-icons/Feather';
 import CustomStatusBar from '../../components/CustomStatusBar';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {useNavigationHandler} from '../../routes/NavigationHandler';
-import {scale} from 'react-native-size-matters';
-import {SCREEN_HEIGHT} from '../../utils/helperFunction';
+import theme from '../../theme/theme';
+import { SCREEN_HEIGHT } from '../../utils/helperFunction';
 
 const OtpA = props => {
   const {confirm, phoneNumber} = props;
@@ -24,11 +21,7 @@ const OtpA = props => {
   const [code, setCode] = useState('');
   console.log(code, '<<<code');
 
-  const handleOnChangeText = text => {
-    setCode(text);
-     
-  };
-
+   
   async function confirmCode(x) {
     console.log(x,'abctest');
     try {

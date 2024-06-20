@@ -15,12 +15,13 @@ const Routes = props => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="login"
+        initialRouteName="home"
         screenOptions={{headerShown: false}}>
         <Stack.Screen
           name="homenavigator"
           component={DrawerNavigation}
           user={user}
+          {...props}
         />
         <Stack.Screen name="login" component={LoginA} />
         <Stack.Screen name="otp" component={OtpA} />

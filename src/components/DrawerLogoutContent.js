@@ -5,7 +5,7 @@ import {scale, verticalScale} from 'react-native-size-matters';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
-import { useNavigationHandler } from '../routes/NavigationHandler';
+import {useNavigationHandler} from '../routes/NavigationHandler';
 
 const DrawerLogoutContent = () => {
   const navigation = useNavigationHandler();
@@ -14,7 +14,9 @@ const DrawerLogoutContent = () => {
       <View style={styles.topFlex}></View>
       <View style={styles.bottomFlex}>
         <View style={styles.fieldContainer}>
-          <TouchableOpacity style={styles.logoBox} >
+          <TouchableOpacity
+            style={styles.logoBox}
+            onPress={() => navigation.navigateTo('login')}>
             <Feather
               name="log-in"
               size={scale(20)}
@@ -84,6 +86,6 @@ const styles = StyleSheet.create({
     fontSize: scale(12),
     color: theme.black,
     marginLeft: scale(20),
-    fontWeight:'500'
+    fontWeight: '500',
   },
 });

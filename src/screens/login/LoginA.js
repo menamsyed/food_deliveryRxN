@@ -27,7 +27,7 @@ const LoginA = () => {
   const [confirm, setConfirm] = useState(null);
   const [phoneNumber, setPhoneNumber] = useState('');
   console.log(phoneNumber);
-  console.log(confirm,'<<<confirm');
+  console.log(confirm, '<<<confirm');
 
   const onChangePhoneNumber = x => {
     setPhoneNumber(x);
@@ -46,7 +46,9 @@ const LoginA = () => {
     <SafeAreaView style={styles.mainContainer}>
       <CustomStatusBar statusBarColor={'black'} />
       <View style={styles.container}>
-        <TouchableOpacity style={styles.iconContainer}>
+        <TouchableOpacity
+          style={styles.iconContainer}
+          onPress={() => navigation.goBack()}>
           <Ionicons
             name={'arrow-back-sharp'}
             size={scale(25)}
@@ -70,10 +72,10 @@ const LoginA = () => {
             </View>
             <View style={styles.inputContainer}>
               <CustomInput
-                placeholder={'03XXXXXXXXX'}
+                placeholder={'try:+921234567890'}
                 keyboardType="default"
                 //number-pad
-                maxLength={15}
+                maxLength={13}
                 onChangePhoneNumber={onChangePhoneNumber}
                 value={phoneNumber}
               />
@@ -83,10 +85,10 @@ const LoginA = () => {
           <View style={styles.buttonContainer}>
             <BottomButton
               title={'Login'}
-             // disabled={phoneNumber.length === 11 ? false : true} //condition
+              disabled={phoneNumber.length === 13 ? false : true} //condition
               buttonStyle={{
                 backgroundColor:
-                  phoneNumber.length === 15
+                  phoneNumber.length === 13
                     ? theme.activeButton
                     : theme.inactiveButton,
               }}
@@ -140,7 +142,7 @@ const LoginA = () => {
             backgroundColor: theme.white,
           },
         }}>
-        <OtpA confirm={confirm} phoneNumber={phoneNumber}/>
+        <OtpA confirm={confirm} phoneNumber={phoneNumber} />
       </RBSheet>
     </SafeAreaView>
   );

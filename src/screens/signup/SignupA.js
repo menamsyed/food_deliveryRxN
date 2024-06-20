@@ -13,6 +13,7 @@ const SignupA = () => {
   const navigation = useNavigationHandler();
   return (
     <SafeAreaView style={styles.mainContainer}>
+      
       <CustomStatusBar statusBarColor={theme.statsuBarDark} />
 
       <View style={styles.container}>
@@ -34,9 +35,15 @@ const SignupA = () => {
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.labelText}>Full Name</Text>
-          <CustomInput placeholder={'Enter your full name'} keyboardType="number-pad" />
+          <CustomInput
+            placeholder={'Enter your full name'}
+            keyboardType="number-pad"
+          />
           <Text style={styles.labelText}>Email</Text>
-          <CustomInput placeholder={'Enter your email'} keyboardType="number-pad" />
+          <CustomInput
+            placeholder={'Enter your email'}
+            keyboardType="number-pad"
+          />
           <Text style={styles.labelText}>Mobile Number</Text>
           <CustomInput placeholder={'03XXXXXXXXX'} keyboardType="number-pad" />
         </View>
@@ -48,6 +55,8 @@ const SignupA = () => {
               backgroundColor: false
                 ? theme.activeButton
                 : theme.inactiveButton,
+              marginTop: verticalScale(30),
+              marginBottom: verticalScale(10),
             }}
             onPress={null} //function
           />

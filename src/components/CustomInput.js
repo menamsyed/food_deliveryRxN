@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     width: '100%',
     height: scale(40),
-    backgroundColor: theme.black,
+    backgroundColor: theme.white,
     borderRadius: 4,
     borderColor: theme.defaultBackgroundColor,
     borderWidth: 1,
