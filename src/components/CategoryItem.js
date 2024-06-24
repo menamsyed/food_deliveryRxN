@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { scale, verticalScale } from 'react-native-size-matters';
-import { default as AntDesign, default as Icon } from 'react-native-vector-icons/AntDesign';
-import { useNavigationHandler } from '../routes/NavigationHandler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {scale, verticalScale} from 'react-native-size-matters';
+import {
+  default as AntDesign,
+  default as Icon,
+} from 'react-native-vector-icons/AntDesign';
+import {useNavigationHandler} from '../routes/NavigationHandler';
 import theme from '../theme/theme';
 import Divider from './Divider';
 
@@ -36,7 +39,9 @@ const CategoryItem = props => {
           <FastImage style={styles.img} source={{uri: image}} />
         </View>
         <View style={styles.textContainer}>
-          <Text style={styles.titleTxt}>{title}</Text>
+          <Text style={styles.titleTxt} numberOfLines={1}>
+            {title}
+          </Text>
           {description ? (
             <Text style={styles.discTxt} numberOfLines={2}>
               {description}
@@ -46,7 +51,7 @@ const CategoryItem = props => {
             <Text style={styles.currPrice}>Rs. {price}</Text>
             <Text style={styles.prevPrice}>{originalPrice}</Text>
           </View>
-          {qty < 1 ? (
+          {true ? (
             <View>
               <Text style={styles.msgTxt}>Item not available</Text>
             </View>
@@ -77,7 +82,9 @@ const CategoryItem = props => {
                 onPress={() => setOpenCartButton(!openCartButton)}>
                 <AntDesign color={theme.white} name={'plus'} size={18} />
               </TouchableOpacity>
-            ) : null}
+            ) : (
+              <View>{null}</View>
+            )}
           </>
         )}
       </TouchableOpacity>
@@ -98,8 +105,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row-reverse',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: verticalScale(6),
-    padding: scale(8),
+    paddingVertical: verticalScale(8),
+    paddingHorizontal: scale(5),
     backgroundColor: theme.white,
   },
   img: {
@@ -161,7 +168,7 @@ const styles = StyleSheet.create({
     borderRadius: scale(20),
     position: 'absolute',
     zIndex: 1,
-    left: scale(247),
+    left: 302,
     top: scale(18),
     elevation: 3,
     shadowColor: '#000',
@@ -185,8 +192,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 3,
-    left: scale(310),
-    top: scale(20),
+    left: 370,
+    top: 20,
     shadowColor: theme.black,
     shadowOffset: {
       width: 0,

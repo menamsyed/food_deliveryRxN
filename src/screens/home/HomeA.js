@@ -1,12 +1,12 @@
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import CustomStatusBar from '../../components/CustomStatusBar';
-import theme from '../../theme/theme';
 import Header from '../../components/Header';
 import ScrollSpy from '../../components/ScrollSpy';
-import {useNavigation} from '@react-navigation/native';
+import theme from '../../theme/theme';
 
 const HomeA = () => {
+  
   return (
     <SafeAreaView style={styles.container}>
       <CustomStatusBar statusBarColor={theme.primaryColor} />

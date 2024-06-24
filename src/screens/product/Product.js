@@ -1,19 +1,20 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
-import { ScrollView } from 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { scale } from 'react-native-size-matters';
+import {ScrollView} from 'react-native-gesture-handler';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {scale} from 'react-native-size-matters';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import CustomStatusBar from '../../components/CustomStatusBar';
 import Footer from '../../components/Footer';
 import ProductDescriptonBox from '../../components/ProductDescriptonBox';
-import { useNavigationHandler } from '../../routes/NavigationHandler';
+import {useNavigationHandler} from '../../routes/NavigationHandler';
 import theme from '../../theme/theme';
 
 const Product = ({route}) => {
   const navigation = useNavigationHandler();
   const {itemDetails} = route.params;
+  console.log(itemDetails, 'logo');
 
   return (
     <>
@@ -35,11 +36,11 @@ const Product = ({route}) => {
             />
           </TouchableOpacity>
           <View style={styles.imgContainer}>
-            <FastImage source={{uri:itemDetails.image}} />
+            <FastImage source={{uri: itemDetails.image}} />
           </View>
           <ProductDescriptonBox itemDetails={itemDetails} />
         </ScrollView>
-        <Footer />
+        <Footer itemDetails={itemDetails} />
       </SafeAreaView>
     </>
   );
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
     width: scale(200),
     height: scale(200),
     backgroundColor: theme.imagePlaceholderColor,
-    backfaceVisibility:'visible',
+    backfaceVisibility: 'visible',
     alignSelf: 'center',
     elevation: scale(10),
     marginVertical: scale(10),

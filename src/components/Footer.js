@@ -3,9 +3,12 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {scale, verticalScale} from 'react-native-size-matters';
 import Add from 'react-native-vector-icons/Entypo';
 import theme from '../theme/theme';
-
 import BottomButton from './BottomButton';
-const Footer = () => {
+import {useNavigationHandler} from '../routes/NavigationHandler';
+
+const Footer = ({itemDetails}) => {
+ 
+  const navigation = useNavigationHandler();
   return (
     <View style={styles.bottomLayerContainer}>
       <View style={styles.counterContainer}>
@@ -18,7 +21,13 @@ const Footer = () => {
           <Add name="plus" color={theme.white} size={20} />
         </TouchableOpacity>
       </View>
-      <BottomButton title={'Add to cart'} buttonStyle={styles.ATCbutton} />
+      <BottomButton
+        title={'Add to cart'}
+        onPress={() =>
+          navigation.navigateTo('cart', {itemDetails})
+        }
+        buttonStyle={styles.ATCbutton}
+      />
     </View>
   );
 };

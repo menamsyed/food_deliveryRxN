@@ -8,6 +8,7 @@ import theme from '../theme/theme';
 import CategoryItem from './CategoryItem';
 import Divider from './Divider';
 import {useNavigationHandler} from '../routes/NavigationHandler';
+import {useGetAllPostQuery} from '../redux/services/post';
 
 const XCategoryTabLayout = ({menuData, isSelect, updateIsSelect}) => {
   return (
@@ -44,6 +45,10 @@ const XCategoryTabLayout = ({menuData, isSelect, updateIsSelect}) => {
 };
 
 export default ScrollSpy = () => {
+  const {data, isLoading, isSuccess} = useGetAllPostQuery();
+  console.log(data);
+  console.log('aba');
+
   const navigation = useNavigationHandler();
   const [isSelect, setIsSelect] = useState(1);
   const [layoutObj, setLayoutObj] = useState({});
@@ -143,12 +148,12 @@ export default ScrollSpy = () => {
 
   const _renderItem = ({item, index}) => (
     <CategoryItem
-      itemId={item.itemId}
+      itemId={item.id}
       title={item.title}
-      description={item.description}
-      price={item.price}
-      originalPrice={item.originalPrice}
-      qty={item.qty}
+      description={item.body}
+      price={item.userId}
+      originalPrice={item.userId}
+      qty={item.userId}
       disabled={item.disabled}
       onPress={() => navigation.navigateTo('product', {itemDetails: item})}
     />
@@ -164,9 +169,10 @@ export default ScrollSpy = () => {
       />
       <View>
         <FlatList
-          data={dummyData}
+          data={data}
           renderItem={_renderItem}
           keyExtractor={item => item.itemId}
+          showsVerticalScrollIndicator={false}
         />
         <Divider height={scale(100)} width={'100%'} color={theme.white} />
       </View>
