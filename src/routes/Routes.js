@@ -9,26 +9,34 @@ import DrawerNavigation from './DrawerNavigation';
 import Product from '../screens/product/Product';
 import SignUpScreen from '../screens/SignUpScreen';
 import CartA from '../screens/cart/CartA';
+import HomeNavigator from './HomeNavigator';
 
 const Stack = createNativeStackNavigator();
 const Routes = props => {
   const {user} = props;
   return (
-    <NavigationContainer>
+    <NavigationContainer  >
       <Stack.Navigator
         initialRouteName="home"
-        screenOptions={{headerShown: false}}>
+        screenOptions={{headerShown: false,animationDuration}}
+        
+        >
         <Stack.Screen
-          name="homenavigator"
+          name="drawernavigation"
           component={DrawerNavigation}
           user={user}
+          {...props}
+        />
+        <Stack.Screen
+          name="homenavigator"
+          component={HomeNavigator}
           {...props}
         />
         <Stack.Screen name="login" component={LoginA} />
         <Stack.Screen name="otp" component={OtpA} />
         <Stack.Screen name="signup" component={SignupA} />
         <Stack.Screen name="product" component={Product} />
-        <Stack.Screen name='cart' component={CartA}/>
+        <Stack.Screen name="cart" component={CartA} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -14,8 +14,10 @@ import Feather from 'react-native-vector-icons/Feather';
 import CustomStatusBar from '../../components/CustomStatusBar';
 import theme from '../../theme/theme';
 import { SCREEN_HEIGHT } from '../../utils/helperFunction';
+import { useNavigationHandler } from '../../routes/NavigationHandler';
 
 const OtpA = props => {
+  const navigation = useNavigationHandler();
   const {confirm, phoneNumber} = props;
 
   const [code, setCode] = useState('');
@@ -55,6 +57,7 @@ const OtpA = props => {
           codeInputStyle={styles.codeInput}
           onFulfill={(x) => {
             confirmCode(x);
+            navigation.navigateTo('home')
             
           }}
           autoFocus={true}

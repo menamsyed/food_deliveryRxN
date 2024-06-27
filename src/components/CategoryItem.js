@@ -26,6 +26,7 @@ const CategoryItem = props => {
     disabled,
     cartBtn,
     qty,
+    
   } = props;
 
   return (
@@ -101,6 +102,7 @@ export default CategoryItem;
 
 const styles = StyleSheet.create({
   mainContainer: {
+    
     width: '100%',
     flexDirection: 'row-reverse',
     alignItems: 'center',
@@ -108,7 +110,7 @@ const styles = StyleSheet.create({
     paddingVertical: verticalScale(8),
     paddingHorizontal: scale(5),
     backgroundColor: theme.white,
-  },
+   },
   img: {
     width: verticalScale(80),
     height: verticalScale(80),
@@ -124,8 +126,10 @@ const styles = StyleSheet.create({
     marginRight: scale(5),
   },
   textContainer: {
-    width: '70%',
+    width: '72%',
     alignItems: 'flex-start',
+    paddingHorizontal: scale(10),
+    marginEnd: scale(10),
   },
   titleTxt: {
     fontSize: scale(15),
@@ -166,10 +170,10 @@ const styles = StyleSheet.create({
     width: scale(80),
     backgroundColor: theme.secondaryColor,
     borderRadius: scale(20),
-    position: 'absolute',
-    zIndex: 1,
-    left: 302,
-    top: scale(18),
+    position: 'relative',
+    //zIndex: 1,
+    left: scale(333),
+    top: scale(28),
     elevation: 3,
     shadowColor: '#000',
     shadowOffset: {
@@ -187,13 +191,13 @@ const styles = StyleSheet.create({
     width: scale(25),
     height: scale(25),
     backgroundColor: theme.secondaryColor,
-    position: 'absolute',
+    position: 'relative',
     borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 3,
-    left: 370,
-    top: 20,
+    left: scale(338),
+    top: scale(30),
     shadowColor: theme.black,
     shadowOffset: {
       width: 0,

@@ -1,14 +1,15 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {FlatList, ScrollView} from 'react-native-gesture-handler';
-import CarouselSlider from './CarouselSlider';
-import {SCREEN_WIDTH} from '../utils/helperFunction';
 import {scale, verticalScale} from 'react-native-size-matters';
+import Materiallcons from 'react-native-vector-icons/MaterialIcons';
+import {useGetAllPostQuery} from '../redux/services/post';
+import {useNavigationHandler} from '../routes/NavigationHandler';
 import theme from '../theme/theme';
+import {SCREEN_WIDTH} from '../utils/helperFunction';
+import CarouselSlider from './CarouselSlider';
 import CategoryItem from './CategoryItem';
 import Divider from './Divider';
-import {useNavigationHandler} from '../routes/NavigationHandler';
-import {useGetAllPostQuery} from '../redux/services/post';
 
 const XCategoryTabLayout = ({menuData, isSelect, updateIsSelect}) => {
   return (
@@ -44,10 +45,12 @@ const XCategoryTabLayout = ({menuData, isSelect, updateIsSelect}) => {
   );
 };
 
-export default ScrollSpy = () => {
+export default ScrollSpy = props => {
+  const {searching, textValue, filteredData} = props;
   const {data, isLoading, isSuccess} = useGetAllPostQuery();
-  console.log(data);
-  console.log('aba');
+  console.log(filteredData, searching, textValue, 'lol');
+  //console.log(data);
+  //console.log('aba');
 
   const navigation = useNavigationHandler();
   const [isSelect, setIsSelect] = useState(1);
@@ -160,22 +163,54 @@ export default ScrollSpy = () => {
   );
 
   return (
-    <ScrollView>
-      <CarouselSlider bannerImages={staticImages} />
-      <XCategoryTabLayout
-        menuData={menuData}
-        isSelect={isSelect}
-        updateIsSelect={_updateIsSelect}
-      />
-      <View>
+    <ScrollView style={styles.emptySearchView}>
+      {searching && textValue.length > 0 ? (
         <FlatList
-          data={data}
+          data={filteredData}
           renderItem={_renderItem}
-          keyExtractor={item => item.itemId}
+          keyExtractor={item => item.id}
           showsVerticalScrollIndicator={false}
+          ListEmptyComponent={() => {
+            return (
+              <>
+                {textValue?.length > 0 ? (
+                  <View style={styles.emptySearchContainer}>
+                    <Materiallcons
+                      name="search-off"
+                      size={100}
+                      color={theme.secondaryColor}
+                    />
+                    <Text style={styles.emptySearchText}>
+                      Sorry, no items found for {textValue}
+                    </Text>
+                  </View>
+                ) : (
+                  <></>
+                )}
+              </>
+            );
+          }}
         />
-        <Divider height={scale(100)} width={'100%'} color={theme.white} />
-      </View>
+      ) : (
+        <>
+          <CarouselSlider bannerImages={staticImages} />
+          <XCategoryTabLayout
+            menuData={menuData}
+            isSelect={isSelect}
+            updateIsSelect={_updateIsSelect}
+          />
+          <View>
+            <FlatList
+              data={data}
+              renderItem={_renderItem}
+              keyExtractor={item => item.itemId}
+              showsVerticalScrollIndicator={false}
+            />
+
+            <Divider height={scale(100)} width={'100%'} color={theme.white} />
+          </View>
+        </>
+      )}
     </ScrollView>
   );
 };
@@ -218,5 +253,21 @@ const styles = StyleSheet.create({
     color: theme.black,
     fontSize: scale(12.5),
     fontWeight: 'bold',
+  },
+  emptySearchContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: verticalScale(150),
+    marginHorizontal: 15,
+    backgroundColor: theme.white,
+  },
+  emptySearchView: {
+    backgroundColor: theme.white,
+  },
+  emptySearchText: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: theme.black,
   },
 });

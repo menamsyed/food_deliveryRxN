@@ -1,17 +1,21 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
-import theme from '../theme/theme';
-import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import FastImage from 'react-native-fast-image';
+import {scale, verticalScale} from 'react-native-size-matters';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import FastImage from 'react-native-fast-image';
+import {useNavigationHandler} from '../routes/NavigationHandler';
+import theme from '../theme/theme';
 
 const DrawerLoginContent = () => {
+  const navigation = useNavigationHandler();
   return (
     <View>
       <View style={styles.topFlex}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigateTo('homenavigator', {screen: 'My Profile'});
+          }}>
           <FastImage
             source={require('../assets/images/Icon.png')}
             style={styles.userImg}
@@ -22,7 +26,10 @@ const DrawerLoginContent = () => {
           <Text style={styles.txt1}>user@gmail.com</Text>
           <Text style={styles.txt1}>03XXXXXXXXX</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigateTo('homenavigator', {screen: 'myorders'});
+          }}>
           <Feather name="edit" size={25} color={theme.white} />
         </TouchableOpacity>
       </View>
@@ -41,7 +48,11 @@ const DrawerLoginContent = () => {
               </Text>
             </View>
           </View>
-          <TouchableOpacity style={styles.logoBox}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigateTo('homenavigator', {screen: 'myorders'});
+            }}
+            style={styles.logoBox}>
             <Ionicons
               name="reader-outline"
               size={scale(20)}
@@ -50,7 +61,11 @@ const DrawerLoginContent = () => {
             <Text style={styles.txt}>My Orders</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.logoBox}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigateTo('homenavigator', {screen: 'contactus'});
+            }}
+            style={styles.logoBox}>
             <Feather
               name="phone-call"
               size={scale(20)}

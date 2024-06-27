@@ -5,8 +5,8 @@ import auth from '@react-native-firebase/auth';
 import SignUpScreen from './screens/SignUpScreen';
 import LogOutScreen from './screens/LogOutScreen';
 import Routes from './routes/Routes';
-import { Provider } from 'react-redux';
-import { store } from './redux/store/store';
+import {Provider} from 'react-redux';
+import {store} from './redux/store/store';
 
 // TODO: Remove when fixed
 
@@ -30,8 +30,8 @@ const App = () => {
     //<SignUpScreen/>
     // <LogOutScreen/>
     // <>{user?<LogOutScreen/>:<LoginScreen/>}</>
-    <Provider store={store}> 
-    <Routes user={user} />
+    <Provider store={store}>
+      <Routes user={user} />
     </Provider>
   );
 };

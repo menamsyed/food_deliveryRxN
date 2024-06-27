@@ -13,6 +13,7 @@ export const postApi = createApi({
         url: 'posts',
         method: 'GET',
       }),
+      transformResponse:(response)=>Object.values(response)
     }),
   }),
 });

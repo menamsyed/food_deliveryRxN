@@ -5215,6 +5215,7 @@ __metadata:
     react-native-screens: ^3.29.0
     react-native-simple-toast: ^3.2.0
     react-native-size-matters: ^0.4.2
+    react-native-spinkit: ^1.5.1
     react-native-splash-screen: ^3.3.0
     react-native-swipe-list-view: ^3.2.9
     react-native-tab-view: ^3.5.2
@@ -8251,7 +8252,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.5.10, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.5.10, prop-types@npm:^15.5.8, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -8608,6 +8609,15 @@ __metadata:
   peerDependencies:
     react-native: "*"
   checksum: 65dac50cad8d03bd046c62e327edf1c162c650fa3320613343bb978ca4b83c8e4e61b0f528502a154a1d4e4baa6dc296799a57737177e3d3c77b64750f5d8076
+  languageName: node
+  linkType: hard
+
+"react-native-spinkit@npm:^1.5.1":
+  version: 1.5.1
+  resolution: "react-native-spinkit@npm:1.5.1"
+  dependencies:
+    prop-types: ^15.5.8
+  checksum: 20f3de49c77e61033db9e0a1fb710f0cb8ac3b4126de98c82627b73992cfd922252822eb30c5b70669dc31fc0d5b0a89de2236c6ad2a115e3b28407cf9696ad8
   languageName: node
   linkType: hard
 

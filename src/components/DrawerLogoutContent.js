@@ -1,11 +1,11 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import theme from '../theme/theme';
-import {scale, verticalScale} from 'react-native-size-matters';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { scale, verticalScale } from 'react-native-size-matters';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
-import {useNavigationHandler} from '../routes/NavigationHandler';
+import { useNavigationHandler } from '../routes/NavigationHandler';
+import theme from '../theme/theme';
 
 const DrawerLogoutContent = () => {
   const navigation = useNavigationHandler();
@@ -24,7 +24,11 @@ const DrawerLogoutContent = () => {
             />
             <Text style={styles.txt}>Log in / Create account</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.logoBox}>
+          <TouchableOpacity
+            style={styles.logoBox}
+            onPressOut={() =>
+              navigation.navigateTo('homenavigator', {screen: 'termsconditions'})
+            }>
             <AntDesign
               name="home"
               size={scale(20)}
@@ -32,7 +36,11 @@ const DrawerLogoutContent = () => {
             />
             <Text style={styles.txt}>Terms and Conditions</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.logoBox}>
+          <TouchableOpacity
+            style={styles.logoBox}
+            onPress={() => {
+              navigation.navigateTo('homenavigator', {screen: 'ourlocations'});
+            }}>
             <Feather
               name="map-pin"
               size={scale(20)}
@@ -40,7 +48,11 @@ const DrawerLogoutContent = () => {
             />
             <Text style={styles.txt}>Our locations</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.logoBox}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigateTo('homenavigator', {screen: 'contactus'});
+            }}
+            style={styles.logoBox}>
             <Feather
               name="phone-call"
               size={scale(20)}

@@ -1,42 +1,43 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import theme from '../theme/theme';
 
-import { useNavigation } from '@react-navigation/native';
-import { TextInput } from 'react-native-gesture-handler';
-import {
-  moderateScale,
-  scale,
-  verticalScale
-} from 'react-native-size-matters';
-export default Header = () => {
+import {useNavigation} from '@react-navigation/native';
+import {TextInput} from 'react-native-gesture-handler';
+import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
+export default Header = props => {
+  const {onChangeText, textValue} = props;
   const navigation = useNavigation();
-   return (
+  return (
     <View style={styles.mainContainer}>
       <View style={styles.contentBox}>
         <View style={styles.leftContainer}>
-          <TouchableOpacity activeOpacity={0.4} onPress={()=>{navigation.openDrawer()}}> 
+          <TouchableOpacity
+            activeOpacity={0.4}
+            onPress={() => {
+              navigation.openDrawer();
+            }}>
             <Feather name="menu" size={scale(20)} color={theme.white} />
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.4}
             style={styles.locationContainer}>
             <Text style={styles.txt1}>Change Location</Text>
-            <Text adjustsFontSizeToFit style={styles.txt2}>staticLocation</Text>
+            <Text adjustsFontSizeToFit style={styles.txt2}>
+              staticLocation
+            </Text>
           </TouchableOpacity>
         </View>
         <View style={styles.rightContainer}>
           <TouchableOpacity activeOpacity={0.4}>
             {true && (
               <View style={styles.qtyBox}>
-                <Text adjustsFontSizeToFit numberOfLines={1} style={styles.txt3}>
+                <Text
+                  adjustsFontSizeToFit
+                  numberOfLines={1}
+                  style={styles.txt3}>
                   55
                 </Text>
               </View>
@@ -54,6 +55,8 @@ export default Header = () => {
         placeholderTextColor={theme.placeholderText}
         maxLength={50}
         style={styles.inputBox}
+        onChangeText={onChangeText}
+        value={textValue}
       />
     </View>
   );
@@ -100,8 +103,7 @@ const styles = StyleSheet.create({
   },
   locationContainer: {
     marginLeft: 10,
-    width:'200%',
-     
+    width: '200%',
   },
   qtyBox: {
     position: 'absolute',
@@ -139,6 +141,5 @@ const styles = StyleSheet.create({
     fontSize: scale(25),
     fontWeight: 'bold',
     color: theme.white,
-    
   },
 });

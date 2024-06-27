@@ -44,6 +44,7 @@
     "react-native-screens": "^3.29.0",
     "react-native-simple-toast": "^3.2.0",
     "react-native-size-matters": "^0.4.2",
+    "react-native-spinkit": "^1.5.1",
     "react-native-splash-screen": "^3.3.0",
     "react-native-swipe-list-view": "^3.2.9",
     "react-native-tab-view": "^3.5.2",

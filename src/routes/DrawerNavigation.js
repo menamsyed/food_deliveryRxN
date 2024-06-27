@@ -1,15 +1,14 @@
-import 'react-native-gesture-handler';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import React from 'react';
-import HomeA from '../screens/home/HomeA';
-import {SCREEN_WIDTH} from '../utils/helperFunction';
+import 'react-native-gesture-handler';
 import DrawerLoginContent from '../components/DrawerLoginContent';
 import DrawerLogoutContent from '../components/DrawerLogoutContent';
+import HomeA from '../screens/home/HomeA';
 
 const Drawer = createDrawerNavigator();
-const DrawerNavigation = (props) => {
-  const {user} = props
-  console.log(user,'abay user yeh hy');
+const DrawerNavigation = props => {
+  const {user} = props;
+  console.log(user, 'abay user yeh hy');
 
   return (
     <Drawer.Navigator
