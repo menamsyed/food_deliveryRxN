@@ -14,7 +14,7 @@ import theme from '../../theme/theme';
 const Product = ({route}) => {
   const navigation = useNavigationHandler();
   const {itemDetails} = route.params;
-  //console.log(itemDetails, 'logo');
+  console.log(itemDetails, 'logo');
 
   return (
     <>
@@ -40,7 +40,7 @@ const Product = ({route}) => {
           </View>
           <ProductDescriptonBox itemDetails={itemDetails} />
         </ScrollView>
-        <Footer itemDetails={itemDetails} />
+        <Footer itemDetails={itemDetails}/>
       </SafeAreaView>
     </>
   );

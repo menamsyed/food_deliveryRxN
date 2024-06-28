@@ -8,6 +8,7 @@ import TCA from '../screens/termscondition/TCA';
 import MyOrdersA from '../screens/trackorder/MyOrdersA';
 import theme from '../theme/theme';
 import { scale } from 'react-native-size-matters';
+import CartA from '../screens/cart/CartA';
 
 const HomeNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -45,6 +46,12 @@ const HomeNavigator = () => {
         component={MyProfile}
         options={{title: 'My Profile'}}
       />
+      <Stack.Screen
+        name="cart"
+        component={CartA}
+        options={{title: 'Cart'}}
+      />
+      
     </Stack.Navigator>
   );
 };

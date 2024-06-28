@@ -2,12 +2,13 @@ import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {scale, verticalScale} from 'react-native-size-matters';
 import Add from 'react-native-vector-icons/Entypo';
+import {useNavigationHandler} from '../routes/NavigationHandler';
 import theme from '../theme/theme';
 import BottomButton from './BottomButton';
-import {useNavigationHandler} from '../routes/NavigationHandler';
 
-const Footer = ({itemDetails}) => {
- 
+const Footer = props => {
+  const {itemDetails} = props;
+  console.log(itemDetails);
   const navigation = useNavigationHandler();
   return (
     <View style={styles.bottomLayerContainer}>
@@ -24,7 +25,10 @@ const Footer = ({itemDetails}) => {
       <BottomButton
         title={'Add to cart'}
         onPress={() =>
-          navigation.navigateTo('cart', {itemDetails})
+          navigation.navigateTo('homenavigator', {
+            screen: 'cart',
+            params: {CartProduct: itemDetails},
+          })
         }
         buttonStyle={styles.ATCbutton}
       />

@@ -1,20 +1,36 @@
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React from 'react';
+import {SafeAreaView, StyleSheet} from 'react-native';
+import {FlatList, ScrollView} from 'react-native-gesture-handler';
+import CartProductCard from '../../components/CartProductCard';
 import CustomStatusBar from '../../components/CustomStatusBar';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import theme from '../../theme/theme';
 
 const CartA = ({route}) => {
-     const {itemDetails} = route.params
-    //console.log(itemDetails,'user CartA main agya');
+  const {CartProduct} = route.params;
+  console.log(CartProduct, 'bsdk');
+
+  const _renderItem = item => <CartProductCard title={item.title} />;
   return (
     <SafeAreaView>
-        <CustomStatusBar statusBarColor={theme.white} contentType={'dark-content'}/>
-
+      <CustomStatusBar
+        statusBarColor={theme.priStatusBar}
+        contentType={'dark-content'}
+      />
+      <ScrollView
+        style={styles.productListContainer}
+        showsVerticalScrollIndicator={false}>
+        <FlatList
+          data={CartProduct}
+          renderItem={_renderItem}
+          keyExtractor={item => item.id}
+        />
+      </ScrollView>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default CartA
+export default CartA;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  productListContainer: {},
+});
