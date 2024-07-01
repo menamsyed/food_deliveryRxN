@@ -7,12 +7,26 @@ import {
   default as AntDesign,
   default as Icon,
 } from 'react-native-vector-icons/AntDesign';
-import {useNavigationHandler} from '../routes/NavigationHandler';
+import {useDispatch, useSelector} from 'react-redux';
+import {addToCart} from '../redux/slices/CartSlice';
 import theme from '../theme/theme';
 import Divider from './Divider';
 
 const CategoryItem = props => {
-  const navigation = useNavigationHandler();
+  const cart = useSelector(state => state.cart.cartData);
+  //console.log(cart, 'cart');
+  const dispatch = useDispatch();
+
+  const _addItemToCart = item => {
+    //console.log(item, 'tello');
+    const prodItem = {
+      ...item,
+      quantity: 1,
+    };
+    dispatch(addToCart(prodItem));
+    console.log(prodItem);
+  };
+
   const [openCartButton, setOpenCartButton] = useState(false);
 
   const {
@@ -26,7 +40,7 @@ const CategoryItem = props => {
     disabled,
     cartBtn,
     qty,
-    
+    data
   } = props;
 
   return (
@@ -80,7 +94,10 @@ const CategoryItem = props => {
             ) : qty >= 1 ? (
               <TouchableOpacity
                 style={styles.buttonPartial}
-                onPress={() => setOpenCartButton(!openCartButton)}>
+                onPress={() => {
+                  setOpenCartButton(!openCartButton);
+                  _addItemToCart(props);
+                }}>
                 <AntDesign color={theme.white} name={'plus'} size={18} />
               </TouchableOpacity>
             ) : (
@@ -102,7 +119,6 @@ export default CategoryItem;
 
 const styles = StyleSheet.create({
   mainContainer: {
-    
     width: '100%',
     flexDirection: 'row-reverse',
     alignItems: 'center',
@@ -110,7 +126,7 @@ const styles = StyleSheet.create({
     paddingVertical: verticalScale(8),
     paddingHorizontal: scale(5),
     backgroundColor: theme.white,
-   },
+  },
   img: {
     width: verticalScale(80),
     height: verticalScale(80),

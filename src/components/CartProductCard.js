@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   },
   imageBox: {
     backgroundColor: theme.imagePlaceholderColor,
-    height: verticalScale(75),
+    height: scale(75),
     width: scale(75),
     borderRadius: scale(10),
     marginRight: scale(10),

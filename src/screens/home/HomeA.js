@@ -1,22 +1,21 @@
-import React, {useEffect, useState} from 'react';
-import {Keyboard, SafeAreaView, StyleSheet} from 'react-native';
-import {FlatList, ScrollView} from 'react-native-gesture-handler';
-import Materiallcons from 'react-native-vector-icons/MaterialIcons';
+import React, { useState } from 'react';
+import { Keyboard, SafeAreaView, StyleSheet } from 'react-native';
 import CustomStatusBar from '../../components/CustomStatusBar';
 import Header from '../../components/Header';
-import ScrollSpy from '../../components/ScrollSpy';
-import {useGetAllPostQuery} from '../../redux/services/post';
-import theme from '../../theme/theme';
 import Loader from '../../components/Loader';
+import ScrollSpy from '../../components/ScrollSpy';
+import { useGetAllPostQuery } from '../../redux/services/post';
+import theme from '../../theme/theme';
 
 const HomeA = () => {
   //DATA fetching.
   const {data, isLoading} = useGetAllPostQuery();
+   
   //STATES for searching.
   const [text, setText] = useState('');
   const [searching, setSearching] = useState(false);
   const [result, setResult] = useState([]);
-  console.log(data, '<==================xoxo');
+  //console.log(data, '<==================xoxo');
   //USEEFFECTS.
 
   const _searchItem = value => {
@@ -43,7 +42,7 @@ const HomeA = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Loader loading={isLoading}/>
+      <Loader loading={isLoading} />
       <CustomStatusBar statusBarColor={theme.primaryColor} />
       <Header
         //closeSearching={_closeSearch}
@@ -52,7 +51,6 @@ const HomeA = () => {
         textValue={text}
       />
       <ScrollSpy searching={searching} textValue={text} filteredData={result} />
-       
     </SafeAreaView>
   );
 };

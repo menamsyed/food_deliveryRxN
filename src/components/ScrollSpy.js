@@ -56,6 +56,7 @@ export default ScrollSpy = props => {
   const [isSelect, setIsSelect] = useState(1);
   const [layoutObj, setLayoutObj] = useState({});
   const [layoutObjX, setLayoutObjX] = useState({});
+  
   const staticImages = [
     'https://burgeroclock.com.pk/_next/image?url=https%3A%2F%2Fassets.indolj.io%2Fimages%2F1699651009-Cricket-Craze.jpg&w=2048&q=75',
     'https://burgeroclock.com.pk/_next/image?url=https%3A%2F%2Fassets.indolj.io%2Fimages%2F1699650814-Sliders.jpg&w=2048&q=75',
@@ -159,6 +160,8 @@ export default ScrollSpy = props => {
       qty={item.userId}
       disabled={item.disabled}
       onPress={() => navigation.navigateTo('product', {itemDetails: item})}
+      data={data}
+       
     />
   );
 
