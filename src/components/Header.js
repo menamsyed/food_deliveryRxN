@@ -1,15 +1,16 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Feather from 'react-native-vector-icons/Feather';
 import theme from '../theme/theme';
 
 import {useNavigation} from '@react-navigation/native';
 import {TextInput} from 'react-native-gesture-handler';
 import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
+import {useNavigationHandler} from '../routes/NavigationHandler';
 export default Header = props => {
   const {onChangeText, textValue} = props;
-  const navigation = useNavigation();
+  const drawerOpener = useNavigation();
+  const navigation = useNavigationHandler();
   return (
     <View style={styles.mainContainer}>
       <View style={styles.contentBox}>
@@ -17,9 +18,9 @@ export default Header = props => {
           <TouchableOpacity
             activeOpacity={0.4}
             onPress={() => {
-              navigation.openDrawer();
+              drawerOpener.openDrawer();
             }}>
-            <Feather name="menu" size={scale(20)} color={theme.white} />
+            <AntDesign name="menuunfold" size={scale(20)} color={theme.white} />
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.4}
@@ -31,7 +32,11 @@ export default Header = props => {
           </TouchableOpacity>
         </View>
         <View style={styles.rightContainer}>
-          <TouchableOpacity activeOpacity={0.4}>
+          <TouchableOpacity
+            activeOpacity={0.4}
+            onPress={() =>
+              navigation.navigateTo('homenavigator', {screen: 'cart'})
+            }>
             {true && (
               <View style={styles.qtyBox}>
                 <Text

@@ -14,7 +14,7 @@ const DrawerLoginContent = () => {
       <View style={styles.topFlex}>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigateTo('homenavigator', {screen: 'My Profile'});
+            navigation.navigateTo('homenavigator', {screen: 'myprofile'});
           }}>
           <FastImage
             source={require('../assets/images/Icon.png')}

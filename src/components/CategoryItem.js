@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -8,23 +8,31 @@ import {
   default as Icon,
 } from 'react-native-vector-icons/AntDesign';
 import {useDispatch, useSelector} from 'react-redux';
-import {addToCart} from '../redux/slices/CartSlice';
+import {addToCart, removeFromCart} from '../redux/slices/CartSlice';
 import theme from '../theme/theme';
 import Divider from './Divider';
 
 const CategoryItem = props => {
   const cart = useSelector(state => state.cart.cartData);
-  //console.log(cart, 'cart');
+  console.log(cart, 'cart');
   const dispatch = useDispatch();
 
   const _addItemToCart = item => {
-    //console.log(item, 'tello');
+    console.log(item, 'tello');
     const prodItem = {
       ...item,
       quantity: 1,
     };
     dispatch(addToCart(prodItem));
     console.log(prodItem);
+  };
+
+  const _removeItemFromCart = item => {
+    dispatch(removeFromCart(item));
+  };
+
+  const _addingProductQuantity = () => {
+    dispatch;
   };
 
   const [openCartButton, setOpenCartButton] = useState(false);
@@ -40,7 +48,6 @@ const CategoryItem = props => {
     disabled,
     cartBtn,
     qty,
-    data
   } = props;
 
   return (
@@ -81,7 +88,10 @@ const CategoryItem = props => {
                 onPress={onPress}
                 style={styles.buttonFull}>
                 <TouchableOpacity
-                  onPress={() => setOpenCartButton(!openCartButton)}>
+                  onPress={() => {
+                    setOpenCartButton(!openCartButton);
+                    _removeItemFromCart(props);
+                  }}>
                   <Icon name="minus" size={15} color={theme.white} />
                 </TouchableOpacity>
                 <Text adjustsFontSizeToFit style={styles.counterText}>
@@ -119,6 +129,7 @@ export default CategoryItem;
 
 const styles = StyleSheet.create({
   mainContainer: {
+     
     width: '100%',
     flexDirection: 'row-reverse',
     alignItems: 'center',
@@ -144,7 +155,7 @@ const styles = StyleSheet.create({
   textContainer: {
     width: '72%',
     alignItems: 'flex-start',
-    paddingHorizontal: scale(10),
+    paddingHorizontal: scale(1),
     marginEnd: scale(10),
   },
   titleTxt: {

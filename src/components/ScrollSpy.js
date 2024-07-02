@@ -160,7 +160,7 @@ export default ScrollSpy = props => {
       qty={item.userId}
       disabled={item.disabled}
       onPress={() => navigation.navigateTo('product', {itemDetails: item})}
-      data={data}
+      
        
     />
   );

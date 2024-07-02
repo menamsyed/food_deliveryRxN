@@ -7,7 +7,7 @@ import MyProfile from '../screens/editprofile/MyProfile';
 import TCA from '../screens/termscondition/TCA';
 import MyOrdersA from '../screens/trackorder/MyOrdersA';
 import theme from '../theme/theme';
-import { scale } from 'react-native-size-matters';
+import {scale} from 'react-native-size-matters';
 import CartA from '../screens/cart/CartA';
 
 const HomeNavigator = () => {
@@ -16,7 +16,7 @@ const HomeNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {backgroundColor: theme.primaryColor},
-        headerTitleStyle:{fontSize:scale(18),fontWeight:'bold'},
+        headerTitleStyle: {fontSize: scale(18), fontWeight: 'bold'},
         headerTintColor: theme.white,
       }}>
       <Stack.Screen
@@ -46,12 +46,7 @@ const HomeNavigator = () => {
         component={MyProfile}
         options={{title: 'My Profile'}}
       />
-      <Stack.Screen
-        name="cart"
-        component={CartA}
-        options={{title: 'Cart'}}
-      />
-      
+      <Stack.Screen name="cart" component={CartA} options={{title: 'Cart'}} />
     </Stack.Navigator>
   );
 };

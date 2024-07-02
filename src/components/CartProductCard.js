@@ -6,7 +6,9 @@ import theme from '../theme/theme';
 import CartHandlerButton from './CartHandlerButton';
 import Divider from './Divider';
 
-const CartProductCard = () => {
+const CartProductCard = (props) => {
+  const {prodID,description,prodQuantity,title} = props
+
   return (
     <>
       <View style={styles.mainContainer}>
@@ -16,7 +18,7 @@ const CartProductCard = () => {
           </View>
           <View style={styles.txtBoxL}>
             <Text style={styles.txtTitle} numberOfLines={2}>
-              product titleproduct titleproduct
+             {title}
             </Text>
             <Text>listted addon</Text>
           </View>
@@ -41,15 +43,15 @@ const styles = StyleSheet.create({
   mainContainer: {
     flexDirection: 'row',
     //backgroundColor: 'red',
-    height: verticalScale(90),
+    height: verticalScale(80),
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: scale(8),
   },
   imageBox: {
     backgroundColor: theme.imagePlaceholderColor,
-    height: scale(75),
-    width: scale(75),
+    height: scale(70),
+    width: scale(70),
     borderRadius: scale(10),
     marginRight: scale(10),
   },

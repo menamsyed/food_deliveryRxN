@@ -11,7 +11,7 @@ const CartHandlerButton = () => {
       <View style={styles.mainContainer}>
         <TouchableOpacity style={styles.leftBox}>
           <FontAwesome6
-            name={false ? 'trash' : 'remove-outline'}
+            name={true ? 'trash' : 'remove-outline'}
             size={scale(16)}
             color={theme.white}
           />
@@ -30,8 +30,8 @@ export default CartHandlerButton;
 const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: theme.placeholderText,
-    width: scale(80),
-    height: verticalScale(30),
+    width: scale(75),
+    height: verticalScale(25),
     borderRadius: scale(20),
     alignItems: 'center',
     justifyContent: 'space-around',
@@ -39,12 +39,12 @@ const styles = StyleSheet.create({
   },
   leftBox: {
     backgroundColor: theme.secondaryColor,
-    padding: scale(3),
+    padding: scale(1),
     borderRadius: scale(20),
   },
   rightBox: {
     backgroundColor: theme.secondaryColor,
-    padding: scale(3),
+    padding: scale(1),
     borderRadius: scale(20),
   },
   quatityTxt:{

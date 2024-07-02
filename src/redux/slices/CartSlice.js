@@ -7,21 +7,24 @@ export const cartSlice = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
-    //  console.log(action.payload, 'sam');
+      //  console.log(action.payload, 'sam');
       let cart = [action.payload, ...state.cartData];
       state.cartData = cart;
-      console.log(state.cartData,'yelo');
-    
     },
     removeFromCart: (state, action) => {
+      console.log(action.payload.itemId, 'remove krao');
+      console.log(state.cartData, 'cartttty');
+
       const removeFromCart = state.cartData.filter(
-        item => item.id !== action.payload.id,
+        item => item.itemId != action.payload.itemId,
       );
+      console.log(removeFromCart, 'sameed');
       state.cartData = removeFromCart;
+      console.log(state.cartData,'nowww');
     },
     incrementQuatity: (state, action) => {
       const itemInCart = state.cartData.find(
-        item => item.id == action.payload.id,
+        item => item.itemId == action.payload.itemId,
       );
       itemInCart.quantity++;
     },
@@ -33,6 +36,7 @@ export const cartSlice = createSlice({
         const removeFromCart = state.cartData.filter(
           item => item.id !== action.payload.id,
         );
+
         state.cartData = removeFromCart;
       } else {
         itemInCart.quantity--;
