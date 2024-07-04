@@ -9,7 +9,7 @@ const ProductDescriptonBox = ({itemDetails}) => {
   return (
     <View style={styles.txtContainer}>
       <Text style={styles.titleTxt}>{itemDetails.title}</Text>
-      <Text style={styles.descriptionTxt}>{itemDetails.description}</Text>
+      <Text style={styles.descriptionTxt}>{itemDetails.body}</Text>
       <View style={styles.priceContainer}>
         <Text style={styles.currPricetxt}>Rs. {itemDetails.price}</Text>
         <Text style={styles.oldPricetxt}>Rs. {itemDetails.originalPrice}</Text>

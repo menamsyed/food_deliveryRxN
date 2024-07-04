@@ -1,6 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Feather from 'react-native-vector-icons/MaterialCommunityIcons'
+
 import theme from '../theme/theme';
 
 import {useNavigation} from '@react-navigation/native';
@@ -20,7 +22,7 @@ export default Header = props => {
             onPress={() => {
               drawerOpener.openDrawer();
             }}>
-            <AntDesign name="menuunfold" size={scale(20)} color={theme.white} />
+            <Feather name="forwardburger" size={scale(20)} color={theme.white} />
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.4}

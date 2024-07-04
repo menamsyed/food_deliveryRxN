@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {scale, verticalScale} from 'react-native-size-matters';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { scale, verticalScale } from 'react-native-size-matters';
 import {
   default as AntDesign,
   default as Icon,
 } from 'react-native-vector-icons/AntDesign';
-import {useDispatch, useSelector} from 'react-redux';
-import {addToCart, removeFromCart} from '../redux/slices/CartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, removeFromCart } from '../redux/slices/CartSlice';
 import theme from '../theme/theme';
 import Divider from './Divider';
 
@@ -110,9 +110,7 @@ const CategoryItem = props => {
                 }}>
                 <AntDesign color={theme.white} name={'plus'} size={18} />
               </TouchableOpacity>
-            ) : (
-              <View>{null}</View>
-            )}
+            ) : null}
           </>
         )}
       </TouchableOpacity>
@@ -129,7 +127,6 @@ export default CategoryItem;
 
 const styles = StyleSheet.create({
   mainContainer: {
-     
     width: '100%',
     flexDirection: 'row-reverse',
     alignItems: 'center',
@@ -145,19 +142,19 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   imgContainer: {
-    width: verticalScale(80),
+    width: scale(80),
     height: verticalScale(80),
     backgroundColor: theme.imagePlaceholderColor,
-    borderRadius: verticalScale(10),
+    borderRadius: scale(10),
     alignSelf: 'flex-end',
     marginRight: scale(5),
   },
   textContainer: {
     width: '72%',
     alignItems: 'flex-start',
-    paddingHorizontal: scale(1),
+    paddingLeft: scale(6),
     marginEnd: scale(10),
-  },
+   },
   titleTxt: {
     fontSize: scale(15),
     fontWeight: 'bold',
@@ -197,10 +194,10 @@ const styles = StyleSheet.create({
     width: scale(80),
     backgroundColor: theme.secondaryColor,
     borderRadius: scale(20),
-    position: 'relative',
+    position: 'absolute',
     //zIndex: 1,
-    left: scale(333),
-    top: scale(28),
+    left: scale(255),
+    top: verticalScale(20),
     elevation: 3,
     shadowColor: '#000',
     shadowOffset: {
@@ -218,13 +215,13 @@ const styles = StyleSheet.create({
     width: scale(25),
     height: scale(25),
     backgroundColor: theme.secondaryColor,
-    position: 'relative',
+    position: 'absolute',
     borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 3,
-    left: scale(338),
-    top: scale(30),
+    left: scale(315),
+    top: verticalScale(20),
     shadowColor: theme.black,
     shadowOffset: {
       width: 0,

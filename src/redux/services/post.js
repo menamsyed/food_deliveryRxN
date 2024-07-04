@@ -1,6 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 
-
 //defining a service using a BASE_URL and expected endpoints
 export const postApi = createApi({
   reducerPath: 'postApi',
@@ -13,7 +12,7 @@ export const postApi = createApi({
         url: 'posts',
         method: 'GET',
       }),
-      transformResponse:(response)=>Object.values(response)
+      transformResponse: response => Object.values(response),
     }),
   }),
 });

@@ -39,7 +39,7 @@ const CartA = ({route}) => {
             return (
               <>
                 <View style={styles.ListEmptyContentBox}>
-                  <Text>There is no item present in your cart.</Text>
+                  <Text style={styles.msgTxt}>There is no item present in your cart.</Text>
                   <BottomButton
                     onPress={() => navigation.navigateTo('home')}
                     title={'Go to menu'}
@@ -69,4 +69,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: theme.white,
   },
+  msgTxt:{
+    fontSize:scale(12),
+    fontWeight:'500',
+    color:theme.black
+  }
 });

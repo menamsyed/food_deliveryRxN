@@ -6,10 +6,13 @@ import Loader from '../../components/Loader';
 import ScrollSpy from '../../components/ScrollSpy';
 import { useGetAllPostQuery } from '../../redux/services/post';
 import theme from '../../theme/theme';
+import { useGetAllMenu } from '../../redux/services/menu';
 
 const HomeA = () => {
   //DATA fetching.
   const {data, isLoading} = useGetAllPostQuery();
+  //const menuDATA = useGetAllMenu();
+  //console.log(menuDATA,'menuuuu');
    
   //STATES for searching.
   const [text, setText] = useState('');
