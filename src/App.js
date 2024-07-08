@@ -7,13 +7,13 @@ import LogOutScreen from './screens/LogOutScreen';
 import Routes from './routes/Routes';
 import {Provider} from 'react-redux';
 import {store} from './redux/store/store';
-
+import {API_URL} from '@env'
 // TODO: Remove when fixed
 
 const App = () => {
   const [user, setUser] = useState();
   console.log(user, 'userrr');
-
+  console.log("myEnvData",API_URL)
   //onAuthStateStateChanged is async listener,
   //which trigger the initial state whenver connection estaiblished with FB
 
