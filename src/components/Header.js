@@ -22,7 +22,7 @@ export default Header = props => {
             onPress={() => {
               drawerOpener.openDrawer();
             }}>
-            <Feather name="forwardburger" size={scale(20)} color={theme.white} />
+            <Feather name="forwardburger" size={scale(25)} color={theme.white} />
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.4}

@@ -1,5 +1,5 @@
-const primary = '#0B5D0b';
-const secondary = '#F6D52E';
+const primary = '#FF9924';
+const secondary = '#C21906';
 
 const theme = {
   primaryColor: primary,
